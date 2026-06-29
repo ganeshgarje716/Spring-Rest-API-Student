@@ -1,5 +1,10 @@
 package com.ganesh.service.imp;
 
-public class StudentServiceImp {
+import org.springframework.stereotype.Service;
+
+import com.ganesh.service.StudentService;
+
+@Service
+public class StudentServiceImp implements StudentService{
 
 }
