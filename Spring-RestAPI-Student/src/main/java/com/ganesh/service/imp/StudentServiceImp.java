@@ -85,6 +85,20 @@ public class StudentServiceImp implements StudentService{
 		throw new StudentNotFoundException("Student Not Found For Id = "+id);
 	}
 
+
+	@Override
+	public String deleteById(Integer id) {
+		
+		if (studentRepository.existsById(id)) {
+			
+			studentRepository.deleteById(id);
+			
+			return "Deleted Success";
+		}
+
+		throw new StudentNotFoundException("Student Not Found For Id = "+id);
+	}
+
 	
 	
 }

@@ -70,5 +70,14 @@ public class StudentRestController {
 		
 		return new ResponseEntity<String>(update, HttpStatus.OK);
 	}
+	
+	
+	
+	public ResponseEntity<String> deleteStudentById(@PathVariable Integer id) {
+		
+		String delete = studentService.deleteById(id);
+		
+		return new ResponseEntity<String>(delete, HttpStatus.OK);
+	}
 
 }
