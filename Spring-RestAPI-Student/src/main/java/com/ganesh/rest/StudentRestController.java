@@ -52,6 +52,7 @@ public class StudentRestController {
 	
 	
 	
+	@GetMapping("/students")
 	public ResponseEntity<List<Student>> findAllStudents() {
 		
 		List<Student> all = studentService.findAllStudents();
