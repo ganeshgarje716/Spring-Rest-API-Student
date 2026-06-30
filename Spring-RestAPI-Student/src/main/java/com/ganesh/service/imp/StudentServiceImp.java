@@ -1,10 +1,13 @@
 package com.ganesh.service.imp;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ganesh.dto.StudentDto;
 import com.ganesh.entity.Student;
+import com.ganesh.exception.StudentNotFoundException;
 import com.ganesh.repository.StudentRepository;
 import com.ganesh.service.StudentService;
 
@@ -30,6 +33,22 @@ public class StudentServiceImp implements StudentService{
 		studentRepository.save(entity);
 		
 		return "Student Save Success";
+	}
+
+
+	@Override
+	public Student findStudentById(Integer id) {
+		
+		Optional<Student> byId = studentRepository.findById(id);
+		
+		if (byId.isPresent()) {
+			
+			Student student= byId.get();
+			
+			return student;
+		}
+		
+		throw new StudentNotFoundException("Student Not Found For Id = "+id);
 	}
 
 }
