@@ -1,5 +1,6 @@
 package com.ganesh.service.imp;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,15 @@ public class StudentServiceImp implements StudentService{
 		}
 		
 		throw new StudentNotFoundException("Student Not Found For Id = "+id);
+	}
+
+
+	@Override
+	public List<Student> findAllStudents() {
+
+        List<Student> all = studentRepository.findAll();
+		
+		return all;
 	}
 
 }

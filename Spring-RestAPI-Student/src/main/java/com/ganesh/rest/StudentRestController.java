@@ -1,5 +1,7 @@
 package com.ganesh.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +48,15 @@ public class StudentRestController {
 		}
 		
 		return new ResponseEntity<Student>(student,HttpStatus.OK);
+	}
+	
+	
+	
+	public ResponseEntity<List<Student>> findAllStudents() {
+		
+		List<Student> all = studentService.findAllStudents();
+		
+		return new ResponseEntity<List<Student>>(all, HttpStatus.OK);
 	}
 
 }
