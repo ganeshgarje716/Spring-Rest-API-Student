@@ -61,4 +61,30 @@ public class StudentServiceImp implements StudentService{
 		return all;
 	}
 
+
+	@Override
+	public String updateStudentById(Integer id, Student student) {
+
+		Optional<Student> byId = studentRepository.findById(id);
+		
+		if (byId.isPresent()) {
+			
+			Student existing = byId.get();
+			
+			existing.setName(student.getName());
+			existing.setAddress(student.getAddress());
+			existing.setAge(student.getAge());
+			existing.setEmail(student.getEmail());
+			existing.setMobileNo(student.getMobileNo());
+			
+			studentRepository.save(existing);
+			
+			return "Student Update Success";
+		}
+		
+		throw new StudentNotFoundException("Student Not Found For Id = "+id);
+	}
+
+	
+	
 }
